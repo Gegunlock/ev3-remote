@@ -12,7 +12,7 @@ if not gamepad.connect():
 
 
 
-##Controller has usually 15 or -15 while sticks not moved
+
 NOISEUP = 153.5
 NOISEDWN = 102.5
 motorA = ev3.LargeMotor('outA')
