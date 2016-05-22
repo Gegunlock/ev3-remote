@@ -1,8 +1,8 @@
 #!/usr/bin/python
 import threading
+import sys
 import dualshock3 as ds3
 import ev3dev.ev3 as ev3
-import time
 
 
 gamepad = ds3.Controller()
@@ -14,8 +14,8 @@ if not gamepad.connect():
 running = True
 speedA = 0
 speedB = 0
-NOISEUP = 153.5
-NOISEDWN = 102.5
+NOISEUP = 170
+NOISEDWN = 90
 
 
 class MotorThread(threading.Thread):
@@ -32,11 +32,9 @@ class MotorThread(threading.Thread):
             if lastspeedA != speedA:
                 self.motorA.run_forever(duty_cycle_sp=speedA)
                 lastspeedA = speedA
-                time.sleep(.05)
             if lastspeedB != speedB:
                 self.motorB.run_forever(duty_cycle_sp=speedB)
                 lastspeedB = speedB
-                time.sleep(.05)
 
         self.motorA.stop()
         self.motorB.stop()
