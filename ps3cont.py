@@ -26,15 +26,9 @@ class MotorThread(threading.Thread):
 
     def run(self):
         print "Engine running!"
-        lastspeedA=0
-        lastspeedB=0
         while running:
-            if lastspeedA != speedA:
                 self.motorA.run_forever(duty_cycle_sp=speedA)
-                lastspeedA = speedA
-            if lastspeedB != speedB:
                 self.motorB.run_forever(duty_cycle_sp=speedB)
-                lastspeedB = speedB
 
         self.motorA.stop()
         self.motorB.stop()
