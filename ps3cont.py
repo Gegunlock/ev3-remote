@@ -2,6 +2,7 @@
 import threading
 import dualshock3 as ds3
 import ev3dev.ev3 as ev3
+import time
 
 
 gamepad = ds3.Controller()
@@ -31,9 +32,11 @@ class MotorThread(threading.Thread):
             if lastspeedA != speedA:
                 self.motorA.run_forever(duty_cycle_sp=speedA)
                 lastspeedA = speedA
+                time.sleep(.05)
             if lastspeedB != speedB:
                 self.motorB.run_forever(duty_cycle_sp=speedB)
                 lastspeedB = speedB
+                time.sleep(.05)
 
         self.motorA.stop()
         self.motorB.stop()
