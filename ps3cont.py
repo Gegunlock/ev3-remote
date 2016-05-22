@@ -45,6 +45,7 @@ motor_thread.start()
 
 
 for event in gamepad.read_loop():
+    rawinput = event.raw_event.value
     if event.stick_moved(ds3.RT_STICK, ds3.Y_AXIS):
         if rawinput < NOISEDWN or rawinput > NOISEUP:
             speedA = event.get_speed()
